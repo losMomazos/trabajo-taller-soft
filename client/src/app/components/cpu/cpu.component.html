@@ -45,10 +45,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr >
-          <th scope="row">1</th>
-          <td><a>cpu name</a></td>
-          <td></td>
+        <tr *ngFor="let cpu of cpus,index as i" >
+          <th scope="row">{{i+1}}</th>
+          <td><a>{{cpu.name}}</a></td>
+          <td>{{cpu.socket}}</td>
         </tr>
       </tbody>
     </table>  

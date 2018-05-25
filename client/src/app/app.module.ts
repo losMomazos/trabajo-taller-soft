@@ -11,6 +11,8 @@ import{RouterModule,Routes}from '@angular/router';
 import { DetailsComponent } from './components/details/details.component';
 import { CpuComponent } from './components/cpu/cpu.component';
 import { GpuComponent } from './components/gpu/gpu.component'
+import {GpuService} from './services/gpu.service';
+import {CpuService}from './services/cpu.service';
 
 const routes:Routes=[
   {path:'',component:InicioComponent },
@@ -40,7 +42,7 @@ const routes:Routes=[
     BrowserModule,
     HttpClientModule
   ],
-  providers: [MotherService],
+  providers: [MotherService,CpuService,GpuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

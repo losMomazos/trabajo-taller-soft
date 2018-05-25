@@ -4,10 +4,10 @@ const Cpu = require('../models/cpu');
 const Motherboard = require('../models/motherboard');
 
 
-router.get('api/cpu',(req,res,next)=>{
+router.get('/api/cpu',(req,res,next)=>{
     Cpu.find({},(err,cpus)=>{
         if(err) return res.status(500).send({msj:"Error al realizar la peticion "});
-        if(!cpus) return res.status(404).send({msj:" no hay motherboard "});
+        if(!cpus) return res.status(404).send({msj:" no hay cpu "});
         res.status(200).json(cpus);
     })
 })
@@ -15,7 +15,7 @@ router.get('/api/cpu/:id',(req,res,next)=>{
     let id = req.params.id;
     Cpu.findById(id,(err,cpu)=>{
         if(err) return res.status(500).send({msj:"Error al realizar la peticion "});
-        if(!cpu) return res.status(404).send({msj:"la motherboard no existe "});
+        if(!cpu) return res.status(404).send({msj:"la cpu no existe "});
         res.json(cpu);
     })
 })

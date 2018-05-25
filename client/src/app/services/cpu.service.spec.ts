@@ -1,6 +1,9 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CpuService } from './cpu.service';
+import {Cpu} from '../Cpu';
+import {Gpu} from '../Gpu';
+import {Motherboard} from '../Motherboard';
 
 describe('CpuService', () => {
   beforeEach(() => {

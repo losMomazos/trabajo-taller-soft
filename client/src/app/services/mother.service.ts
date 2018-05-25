@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Motherboard} from '../Motherboard';
 import {Cpu} from '../Cpu';
+import {Gpu} from '../Gpu';
 import {map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
