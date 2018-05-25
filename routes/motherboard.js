@@ -4,7 +4,7 @@ router.get('/api/motherboard',(req,res,next)=>{
     Motherboard.find({},(err,motherboards)=>{
         if(err) return res.status(500).send({msj:"Error al realizar la peticion "});
         if(!motherboards) return res.status(404).send({msj:" no hay motherboard "});
-        res.status(200).send({motherboards})
+        res.status(200).json(motherboards);
     })
 })
 router.get('/api/motherboard/:id',(req,res,next)=>{
