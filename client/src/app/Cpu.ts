@@ -1,6 +1,5 @@
-export class Motherboard{
+export class Cpu{
     name:string;
     socket:string;
     category:string;
-    img:string;
 }

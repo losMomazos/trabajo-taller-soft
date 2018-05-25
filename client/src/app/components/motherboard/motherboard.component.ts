@@ -14,6 +14,7 @@ export class MotherboardComponent implements OnInit {
     this.motherService.getMother()
     .subscribe(motherboars=>{
       this.motherboars =  motherboars;
+      //console.log(this.motherboars)
     })
    }
 

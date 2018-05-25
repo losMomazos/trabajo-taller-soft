@@ -1,0 +1,20 @@
+<th>{{motherboard.name}}</th>
+<p>{{motherboard.img}}</p>
+<img [src]="'assets/img/'+motherboard.img " alt="">
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Socket</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cpu of cpuCompatibles,index as i">
+            <th scope="row">{{i+1}}</th>
+            <td><a>{{cpu.name}}</a></td>
+            <td>{{cpu.socket}}</td>
+        </tr>
+    </tbody>
+</table>
+    

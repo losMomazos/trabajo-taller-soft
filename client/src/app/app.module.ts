@@ -7,6 +7,19 @@ import { FooterComponent } from './components/footer/footer.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { MotherboardComponent } from './components/motherboard/motherboard.component';
 import{MotherService} from './services/mother.service';
+import{RouterModule,Routes}from '@angular/router';
+import { DetailsComponent } from './components/details/details.component';
+import { CpuComponent } from './components/cpu/cpu.component';
+import { GpuComponent } from './components/gpu/gpu.component'
+
+const routes:Routes=[
+  {path:'',component:InicioComponent },
+  {path:'motherboard',component:MotherboardComponent},
+  {path:'motherboard/details/:id',component:DetailsComponent},
+  {path:'cpu',component:CpuComponent},
+  {path:'gpu',component:GpuComponent},
+];
+
 
 @NgModule({
   declarations: [
@@ -15,9 +28,15 @@ import{MotherService} from './services/mother.service';
     FooterComponent,
     InicioComponent,
     MotherboardComponent,
+    DetailsComponent,
+    CpuComponent,
+    GpuComponent,
     
   ],
   imports: [
+    RouterModule.forRoot(
+      routes
+    ),
     BrowserModule,
     HttpClientModule
   ],
