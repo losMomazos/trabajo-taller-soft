@@ -5,8 +5,12 @@ const Schema = mongoose.Schema;
 const MotherboardSchema = Schema({
     name:String,
     socket:String,
+    chipset:String,
     category:{type:String,enum:['Motherboard']},
     img:String,
+    puertos:String,
+    fab:String,
+    format:String,
 })
 
-module.exports = mongoose.model('product',MotherboardSchema);
+module.exports = mongoose.model('motherboard',MotherboardSchema);
