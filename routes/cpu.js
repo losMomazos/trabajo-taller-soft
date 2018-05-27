@@ -13,13 +13,14 @@ router.get('/api/cpu',(req,res,next)=>{
 })
 router.get('/api/cpu/:id',(req,res,next)=>{
     let id = req.params.id;
+    console.log(id);
     Cpu.findById(id,(err,cpu)=>{
         if(err) return res.status(500).send({msj:"Error al realizar la peticion "});
         if(!cpu) return res.status(404).send({msj:"la cpu no existe "});
         res.json(cpu);
     })
 })
-router.get('/api/motherboard/compatibilidadmother/:id',(req,res,next)=>{
+router.get('/api/cpu/compatibilidadmother/:id',(req,res,next)=>{
     let id = req.params.id;
     Cpu.findById(id,(err,cpu)=>{
         if(err) return res.status(500).send({msj:"Error al realizar la peticion "});

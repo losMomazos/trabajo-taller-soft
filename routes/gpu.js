@@ -10,14 +10,16 @@ router.get('/api/gpu',(req,res,next)=>{
         res.json(gpus);
     });
 });
+
 router.get('/api/gpu/:id',(req,res,next)=>{
     let id = req.params.id;
-    Gpu.findById((err,gpu)=>{
+    Gpu.findById(id,(err,gpu)=>{
         if(err) throw err;
         if(!gpu) return res.status(404).send({msj:"Erro la gpu no existe "});
         res.json(gpu); 
     })
 })
+
 router.post('/api/gpu',(req,res,next)=>{
     let gpu = new Gpu();
     gpu.name =  req.body.name;

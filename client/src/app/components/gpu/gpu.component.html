@@ -47,7 +47,7 @@
       <tbody>
         <tr *ngFor ="let gpu of gpus, index as i">
           <th scope="row">{{i+1}}</th>
-          <td><a >{{gpu.name}}</a></td>
+          <td><a [routerLink]="['details/',gpu._id]">{{gpu.name}}</a></td>
           <td>{{gpu.puerto}}</td>
         </tr>
       </tbody>

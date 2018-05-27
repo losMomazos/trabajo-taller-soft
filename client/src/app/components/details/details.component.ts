@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {MotherService} from '../../services/mother.service';
 import {Motherboard} from '../../Motherboard';
 import {Cpu} from '../../Cpu';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',

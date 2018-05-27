@@ -14,4 +14,8 @@ export class GpuService {
     return this.http.get<Gpu[]>(`${this.domain}/api/gpu`)
     .pipe(map(res=>res));
   }
+  getDetails(id){
+    return this.http.get<Gpu>(`${this.domain}/api/gpu/${id}`)
+    .pipe(map(res=>res));
+  }
 }

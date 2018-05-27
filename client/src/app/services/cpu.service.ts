@@ -16,4 +16,12 @@ export class CpuService {
     return this.http.get<Cpu[]>(`${this.domain}/api/cpu`)
     .pipe(map(res=>res))
   }
+  getDetails(id){
+    return this.http.get<Cpu>(`${this.domain}/api/cpu/${id}`)
+    .pipe(map(res=>res));
+  }
+  getMother(id){
+    return this.http.get<Motherboard[]>(`${this.domain}/api/cpu/compatibilidadmother/${id}`)
+    .pipe(map(res=>res));
+  }
 }

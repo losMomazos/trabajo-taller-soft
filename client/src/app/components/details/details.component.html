@@ -1,6 +1,5 @@
-<th>{{motherboard.name}}</th>
-<p>{{motherboard.img}}</p>
-<img [src]="'assets/img/'+motherboard.img " alt="">
+<th *ngIf="motherboard">{{motherboard.name}}</th>
+<img *ngIf = "motherboard"[src]="'assets/img/'+motherboard.img " alt="">
 <table class="table">
     <thead class="thead-dark">
         <tr>

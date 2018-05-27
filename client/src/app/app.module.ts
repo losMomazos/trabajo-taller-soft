@@ -13,13 +13,17 @@ import { CpuComponent } from './components/cpu/cpu.component';
 import { GpuComponent } from './components/gpu/gpu.component'
 import {GpuService} from './services/gpu.service';
 import {CpuService}from './services/cpu.service';
-
+import { DetailcpuComponent } from './components/detailcpu/detailcpu.component';
+import { DetailgpuComponent } from './components/detailgpu/detailgpu.component';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 const routes:Routes=[
   {path:'',component:InicioComponent },
   {path:'motherboard',component:MotherboardComponent},
   {path:'motherboard/details/:id',component:DetailsComponent},
   {path:'cpu',component:CpuComponent},
+  {path:'cpu/details/:id',component:DetailcpuComponent},
   {path:'gpu',component:GpuComponent},
+  {path:'gpu/details/:id',component:DetailgpuComponent},
 ];
 
 
@@ -33,6 +37,8 @@ const routes:Routes=[
     DetailsComponent,
     CpuComponent,
     GpuComponent,
+    DetailcpuComponent,
+    DetailgpuComponent,
     
   ],
   imports: [
@@ -40,7 +46,9 @@ const routes:Routes=[
       routes
     ),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [MotherService,CpuService,GpuService],
   bootstrap: [AppComponent]
