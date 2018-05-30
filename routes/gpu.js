@@ -22,10 +22,14 @@ router.get('/api/gpu/:id',(req,res,next)=>{
 
 router.post('/api/gpu',(req,res,next)=>{
     let gpu = new Gpu();
+    
     gpu.name =  req.body.name;
     gpu.puerto =  req.body.puerto;
     gpu.category =  req.body.category;
     gpu.img =  req.body.img;
+    gpu.fab = req.body.fab;
+    gpu.memory = req.body.memory;
+
     gpu.save((err,gpuSaved)=>{
         if(err) throw err;
         res.json(gpuSaved);

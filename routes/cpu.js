@@ -38,6 +38,9 @@ router.post('/api/cpu',(req,res,next)=>{
     cpu.socket = req.body.socket;
     cpu.category = req.body.category;
     cpu.img = req.body.img;
+    cpu.fab = req.body.fab;
+    cpu.nucleos = req.body.nucleos;
+    cpu.frequency = req.body.frequency;
 
     cpu.save((err,cpuStore)=>{
         if(err) res.status(500).send({msj:`Error to save ${err}` })

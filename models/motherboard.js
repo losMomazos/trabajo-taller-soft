@@ -8,7 +8,7 @@ const MotherboardSchema = Schema({
     chipset:String,
     category:{type:String,enum:['Motherboard']},
     img:String,
-    puertos:String,
+    puerto:String,
     fab:String,
     format:String,
 })

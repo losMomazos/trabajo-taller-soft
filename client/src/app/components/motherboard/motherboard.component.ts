@@ -10,15 +10,21 @@ import {MotherService} from '../../services/mother.service'
 })
 export class MotherboardComponent implements OnInit {
   motherboars:Motherboard[];
+  motherboarsFilter:Motherboard[];
   constructor(private motherService:MotherService) {
     this.motherService.getMother()
     .subscribe(motherboars=>{
       this.motherboars =  motherboars;
-      //console.log(this.motherboars)
+      this.motherboarsFilter = this.motherboars;
     })
    }
 
   ngOnInit() {
   }
-
+  funciona(variable:string){
+    console.log(variable);
+    this.motherboarsFilter = this.motherboars.filter(mother=>{
+      return mother.name.toLocaleLowerCase().includes(variable.toLocaleLowerCase());
+    })
+  }
 }

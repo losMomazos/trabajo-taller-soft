@@ -41,6 +41,11 @@ router.post('/api/motherboard',(req,res,next)=>{
     motherboard.name = req.body.name;
     motherboard.socket = req.body.socket;
     motherboard.category = req.body.category;
+    motherboard.chipset = req.body.chipset;
+    motherboard.img = req.body.img;
+    motherboard.puerto = req.body.puerto;
+    motherboard.fab = req.body.fab;
+    motherboard.format = req.body.format;
 
     motherboard.save((err,motherboardStore)=>{
         if(err) res.status(500).send({msj:`Error to save ${err}` })
