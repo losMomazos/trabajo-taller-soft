@@ -3,4 +3,6 @@ export class Gpu{
     puerto:string;
     category:string;
     img:string;
+    memory:string;
+    fab:string;
 }

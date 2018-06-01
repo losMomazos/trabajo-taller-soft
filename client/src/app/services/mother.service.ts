@@ -24,4 +24,9 @@ export class MotherService {
     return this.http.get<Cpu[]>(`${this.domain}/api/motherboard/compatibilidadcpu/${id}`)
     .pipe(map(res=>res));
   }
+  getGpu(id){
+    console.log("pase por aqui");
+    return this.http.get<Gpu[]>(`${this.domain}/api/motherboard/compatibilidadgpu/${id}`)
+    .pipe(map(res=>res));
+  }
 }

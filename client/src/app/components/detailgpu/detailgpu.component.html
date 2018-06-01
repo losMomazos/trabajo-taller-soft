@@ -1,1 +1,17 @@
-<p *ngIf="gpu">{{gpu.name}}</p>   
+<p *ngIf="gpu">{{gpu.name}}</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Port</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mother of motherCompatibles,index as i">
+            <th scope="row">{{i+1}}</th>
+            <td><a>{{mother.name}}</a></td>
+            <td>{{mother.port}}</td>
+        </tr>
+    </tbody>
+</table>       

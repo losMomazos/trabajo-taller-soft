@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {Motherboard}from '../../Motherboard';
 import {MotherService} from '../../services/mother.service'
+import { $ } from 'protractor';
 
 
 @Component({
@@ -26,5 +27,8 @@ export class MotherboardComponent implements OnInit {
     this.motherboarsFilter = this.motherboars.filter(mother=>{
       return mother.name.toLocaleLowerCase().includes(variable.toLocaleLowerCase());
     })
+  }
+  update($event){
+    console.log($event.target.value);
   }
 }

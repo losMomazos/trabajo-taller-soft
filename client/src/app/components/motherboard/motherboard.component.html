@@ -1,11 +1,19 @@
 <div class="row">
   <div class="col-4">
     <form >
+      
       <div class="form-group">
         <label for="nombre"></label>
         <input #nombre type="text" id="nombre" placeholder="Ingrese el nombre">
       </div>
       <button class="btn btn-danger"(click)="funciona(nombre.value)">submit</button>
+      <div class="form-group">
+        <label for="multipleSelection">Elige alguna wea</label>
+        <select (change)="update($event)" class="form-control" id="multipleSelection">
+          <option>AMD</option>
+          <option>INTEL</option>
+        </select>
+      </div>
     </form>
   </div>
   <div class="col-8 ">

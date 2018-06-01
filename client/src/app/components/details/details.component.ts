@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {MotherService} from '../../services/mother.service';
 import {Motherboard} from '../../Motherboard';
 import {Cpu} from '../../Cpu';
+import { Gpu } from '../../Gpu';
 //import { Observable } from 'rxjs';
 @Component({
   selector: 'app-details',
@@ -12,6 +13,7 @@ import {Cpu} from '../../Cpu';
 export class DetailsComponent implements OnInit {
   motherboard:any;
   cpuCompatibles:Cpu[];
+  gpuCompatible:Gpu[];
   constructor(private ruta:ActivatedRoute,private motherService:MotherService) {
     this.ruta.params.subscribe(params=>{
       
@@ -21,7 +23,10 @@ export class DetailsComponent implements OnInit {
       });
       this.motherService.getCpu(params['id']).subscribe(cpus=>{
         this.cpuCompatibles = cpus;
-      })
+      });
+      this.motherService.getGpu(params['id']).subscribe(gpus=>{
+        this.gpuCompatible = gpus;
+      });
     })
 
   }

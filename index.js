@@ -21,7 +21,7 @@ mongoose.connect('mongodb://localhost:27017/meme',(err,res)=>{
     if(err) return console.log(`Error to connect ${err}`);
     console.log('mongoDB running...');
 
-    app.listen(3000,()=>{
+    app.listen(port,()=>{
         console.log(`Server on port ${port}`);
     });
 })
