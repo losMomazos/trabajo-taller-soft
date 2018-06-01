@@ -7,8 +7,8 @@ de pcs
 
 ## 1.requisitos
 
-[nodejs.org](https://nodejs.org/en/)
-+ mongodb < https://www.mongodb.com/> version community 
++ [nodejs.org](https://nodejs.org/en/)
++ mongodb version community <https://www.mongodb.com/> 
 + angular(cli) <https://angular.io/>
 ##### alternativos
 + mongo compass(es una manera grafica de ver los datos)
