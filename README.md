@@ -7,7 +7,7 @@ de pcs
 
 ## 1.requisitos
 
-+ [nodejs.org](https://nodejs.org/en/)
++ node [nodejs.org](https://nodejs.org/en/)
 + mongodb version community <https://www.mongodb.com/> 
 + angular(cli) <https://angular.io/>
 ##### alternativos
