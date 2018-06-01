@@ -7,7 +7,7 @@ de pcs
 
 ## 1.requisitos
 
-    + nodejs y npm < https://nodejs.org/en/ >
+    + nodejs y npm [nodejs.org](https://nodejs.org/en/)
     + mongodb <https://www.mongodb.com/ version community>
     + angular(cli) < https://angular.io/ >
  ##### alternativos
