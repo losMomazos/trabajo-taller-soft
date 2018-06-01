@@ -7,12 +7,16 @@
         <input #nombre type="text" id="nombre" placeholder="Ingrese el nombre">
       </div>
       <button class="btn btn-danger"(click)="funciona(nombre.value)">submit</button>
-      <div class="form-group">
+      <div class="form-group" >
         <label for="multipleSelection">Elige alguna wea</label>
-        <select (change)="update($event)" class="form-control" id="multipleSelection">
-          <option>AMD</option>
-          <option>INTEL</option>
+        <br>
+        <select class="selectpicker" (change)="update($event)" id="multipleSelection">
+            <option>Mustard</option>
+            <option>Ketchup</option>
+            <option>Relish</option>
         </select>
+      </div>
+      <div>    
       </div>
     </form>
   </div>

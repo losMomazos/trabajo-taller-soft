@@ -1,5 +1,22 @@
-<th *ngIf="motherboard">{{motherboard.name}}</th>
-<img *ngIf = "motherboard"[src]="'assets/img/'+motherboard.img " alt="">
+<div class="row">
+    <div class="col-7">
+        <img src="assets/img/prueba.jpeg" alt="">
+    </div>
+    <div class="col-5">
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre  {{motherboard.name}}</li>
+                    <li class="list-group-item">Socket  {{motherboard.socket}}</li>
+                    <li class="list-group-item">Chipset  {{motherboard.chipset}}</li>
+                    <li class="list-group-item">Fabricante  {{motherboard.fab}}</li>
+                    <li class="list-group-item">Formato {{motherboard.format}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -31,4 +48,5 @@
             <td>{{gpu.port}}</td>
         </tr>
     </tbody>
-</table>    
+</table>
+</div>    

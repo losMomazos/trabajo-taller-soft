@@ -1,4 +1,20 @@
-<p *ngIf="gpu">{{gpu.name}}</p>
+<div class="row">
+    <div class="col-7">
+        <img src="assets/img/prueba.jpeg" alt="">
+    </div>
+    <div class="col-5">
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre  {{gpu.name}}</li>
+                    <li class="list-group-item">Fabricante  {{gpu.fab}}</li>
+                    <li class="list-group-item">puerto {{gpu.puerto}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -14,4 +30,5 @@
             <td>{{mother.port}}</td>
         </tr>
     </tbody>
-</table>       
+</table>
+</div>       
