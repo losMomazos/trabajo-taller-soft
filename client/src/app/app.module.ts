@@ -16,6 +16,7 @@ import {CpuService}from './services/cpu.service';
 import { DetailcpuComponent } from './components/detailcpu/detailcpu.component';
 import { DetailgpuComponent } from './components/detailgpu/detailgpu.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+
 const routes:Routes=[
   {path:'',component:InicioComponent },
   {path:'motherboard',component:MotherboardComponent},

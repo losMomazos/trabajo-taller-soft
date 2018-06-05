@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient,HttpParams} from '@angular/common/http';
 import {Motherboard} from '../Motherboard';
 import {Cpu} from '../Cpu';
 import {Gpu} from '../Gpu';
@@ -15,6 +15,13 @@ export class MotherService {
     return this.http.get<Motherboard[]>(`${this.domain}/api/motherboard`)
     .pipe(map(res=>res));
     
+  }
+  getMotherParameters(){
+    let params = new HttpParams().set('socket','LGA 1151');
+    //params.set('firstname', yourFirstNameData);
+    //params.set('lastname', yourLastNameData);
+    return this.http.get<Motherboard[]>(`${this.domain}/api/motherboard`,{params:params})
+    .pipe(map(res=>res));
   }
   getDetails(id){
     return this.http.get<Motherboard>(`${this.domain}/api/motherboard/${id}`)

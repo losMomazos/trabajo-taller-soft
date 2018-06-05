@@ -13,12 +13,19 @@ export class MotherboardComponent implements OnInit {
   motherboars:Motherboard[];
   motherboarsFilter:Motherboard[];
   constructor(private motherService:MotherService) {
+    
     this.motherService.getMother()
     .subscribe(motherboars=>{
       this.motherboars =  motherboars;
       this.motherboarsFilter = this.motherboars;
     })
-   }
+   /*
+    this.motherService.getMotherParameters()
+    .subscribe(motherboars=>{
+      this.motherboarsFilter = motherboars;
+    })
+    */
+  }
 
   ngOnInit() {
   }
@@ -30,5 +37,11 @@ export class MotherboardComponent implements OnInit {
   }
   update($event){
     console.log($event.target.value);
+  }
+  parameters(){
+    this.motherService.getMotherParameters()
+    .subscribe(motherboars=>{
+      this.motherboars =  motherboars;
+    })
   }
 }

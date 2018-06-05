@@ -13,7 +13,7 @@ import { Gpu } from '../../Gpu';
 export class DetailsComponent implements OnInit {
   motherboard:any;
   cpuCompatibles:Cpu[];
-  gpuCompatible:Gpu[];
+  gpuCompatibles:Gpu[];
   constructor(private ruta:ActivatedRoute,private motherService:MotherService) {
     this.ruta.params.subscribe(params=>{
       
@@ -25,7 +25,7 @@ export class DetailsComponent implements OnInit {
         this.cpuCompatibles = cpus;
       });
       this.motherService.getGpu(params['id']).subscribe(gpus=>{
-        this.gpuCompatible = gpus;
+        this.gpuCompatibles = gpus;
       });
     })
 

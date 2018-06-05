@@ -21,6 +21,7 @@ de pcs
 + iniciar el motor de mongo (en linux es `sudo mongod`  pero nose en windows)
 + moverse a la carpeta data del proyecto
 + iniciar la shell de mongo (en linux es `mongo` simplemente)
++ usar `use meme`  nombre de la base de datos 
 + dentro de la shell ejecutar ` load("cpu.js") `
 + dentro de la shell ejecutar ` load("gpu.js") `
 + dentro de la shell ejecutar ` load("motherboard.js") `
@@ -28,5 +29,5 @@ de pcs
 + inicias el motor de mongo (` sudo mongod `)
 + dentro de la carpeta trabajo-taller-soft ejecuta ` npm run dev `
 + entrar en la carpeta ` client/ `
-+ ejecutar ` ng serve --open `  o ejecutar ng serve y abrir en el navegador localhost:3000
++ ejecutar ` ng serve --open `  o ejecutar `ng serve` y abrir en el navegador localhost:3000
 ## 5.Maravillate xD

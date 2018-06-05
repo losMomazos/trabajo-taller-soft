@@ -6,11 +6,11 @@
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Nombre  {{motherboard.name}}</li>
-                    <li class="list-group-item">Socket  {{motherboard.socket}}</li>
-                    <li class="list-group-item">Chipset  {{motherboard.chipset}}</li>
-                    <li class="list-group-item">Fabricante  {{motherboard.fab}}</li>
-                    <li class="list-group-item">Formato {{motherboard.format}}</li>
+                    <li *ngIf="motherboard" class="list-group-item">Nombre  {{motherboard.name}}</li>
+                    <li *ngIf="motherboard" class="list-group-item">Socket  {{motherboard.socket}}</li>
+                    <li *ngIf="motherboard" class="list-group-item">Chipset  {{motherboard.chipset}}</li>
+                    <li *ngIf="motherboard" class="list-group-item">Fabricante  {{motherboard.fab}}</li>
+                    <li *ngIf="motherboard" class="list-group-item">Formato {{motherboard.format}}</li>
                 </ul>
             </div>
         </div>
