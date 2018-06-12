@@ -16,10 +16,17 @@ export class MotherService {
     .pipe(map(res=>res));
     
   }
-  getMotherParameters(){
-    let params = new HttpParams().set('socket','LGA 1151');
-    //params.set('firstname', yourFirstNameData);
-    //params.set('lastname', yourLastNameData);
+  getMotherParameters(parametros:any[]){
+    let params = new HttpParams();
+    for(var i=0;i<parametros.length;i++){
+      if(parametros[i].socket){
+        params = params.set('socket',parametros[i].socket);
+      }else if(parametros[i].chipset){
+        params = params.set('chipset',parametros[i].chipset);
+      }else if(parametros[i].format){
+        params = params.set('format',parametros[i].format);
+      }
+    }
     return this.http.get<Motherboard[]>(`${this.domain}/api/motherboard`,{params:params})
     .pipe(map(res=>res));
   }

@@ -12,6 +12,10 @@ import { $ } from 'protractor';
 export class MotherboardComponent implements OnInit {
   motherboars:Motherboard[];
   motherboarsFilter:Motherboard[];
+  parametros:any=[];
+  actualParams:string="";
+  actualChipset:string="";
+  actualFormat:string="";
   constructor(private motherService:MotherService) {
     
     this.motherService.getMother()
@@ -36,12 +40,61 @@ export class MotherboardComponent implements OnInit {
     })
   }
   update($event){
-    console.log($event.target.value);
+    if($event.target.id=='multipleSelection'){
+      if(this.actualParams!=""){
+        var a =0;
+        while(a<this.parametros.length && this.parametros[a].socket!=this.actualParams){
+          a++;
+        }     
+        this.parametros.splice(a,1);
+        this.actualParams ="";
+        if($event.target.value==""){
+          this.parameters();
+        }
+      }if($event.target.value!="" && this.actualParams==""){
+        this.actualParams = $event.target.value;
+        this.parametros.push({"socket":this.actualParams});
+        this.parameters();
+      }
+    }else if($event.target.id=="chipsetSelection"){
+      if(this.actualChipset!=""){
+        var a =0;
+        while(a<this.parametros.length && this.parametros[a].chipset!=this.actualChipset){
+          a++;
+        }     
+        this.parametros.splice(a,1);
+        this.actualChipset ="";
+        if($event.target.value==""){
+          this.parameters();
+        }
+      }if($event.target.value!="" && this.actualChipset==""){
+        this.actualChipset = $event.target.value;
+        this.parametros.push({"chipset":this.actualChipset});
+        this.parameters();
+      }
+    }else if($event.target.id=="formatSelection"){
+      if(this.actualFormat!=""){
+        var a =0;
+        while(a<this.parametros.length && this.parametros[a].format!=this.actualFormat){
+          a++;
+        }     
+        this.parametros.splice(a,1);
+        this.actualFormat ="";
+        if($event.target.value==""){
+          this.parameters();
+        }
+      }if($event.target.value!="" && this.actualFormat==""){
+        this.actualFormat = $event.target.value;
+        this.parametros.push({"format":this.actualFormat});
+        this.parameters();
+      }
+    }
+
   }
   parameters(){
-    this.motherService.getMotherParameters()
+    this.motherService.getMotherParameters(this.parametros)
     .subscribe(motherboars=>{
-      this.motherboars =  motherboars;
+      this.motherboarsFilter =  motherboars;
     })
   }
 }

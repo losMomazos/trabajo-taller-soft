@@ -8,12 +8,30 @@
       </div>
       <button class="btn btn-danger"(click)="funciona(nombre.value)">submit</button>
       <div class="form-group" >
-        <label for="multipleSelection">Elige alguna wea</label>
+        <label for="multipleSelection">Elige socket</label>
         <br>
         <select class="selectpicker" (change)="update($event)" id="multipleSelection">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
+          <option></option>
+          <option>LGA 1151-v2</option>
+          <option>LGA 1151</option>
+          <option>AM4</option>
+        </select>
+        <br>
+        <label for="chipsetSelection">Elige chipset</label>
+        <br>
+        <select class="selectpicker" (change)="update($event)" id="chipsetSelection">
+          <option></option>
+          <option>AMD A320</option>
+          <option>Intel H270</option>
+          <option>Intel H310</option>
+        </select>
+        <br>
+        <label for="formatSelection">Elige Formato</label>
+        <br>
+        <select class="selectpicker" (change)="update($event)" id="formatSelection">
+          <option></option>
+          <option>Micro ATX</option>
+          <option>ATX</option>
         </select>
       </div>
       <div>    

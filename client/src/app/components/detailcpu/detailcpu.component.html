@@ -6,9 +6,9 @@
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Nombre  {{cpu.name}}</li>
-                    <li class="list-group-item">Fabricante  {{cpu.fab}}</li>
-                    <li class="list-group-item">Nucleos {{cpu.nucleos }}</li>
+                    <li *ngIf="cpu" class="list-group-item">Nombre  {{cpu.name}}</li>
+                    <li *ngIf="cpu" class="list-group-item">Fabricante  {{cpu.fab}}</li>
+                    <li *ngIf="cpu" class="list-group-item">Nucleos {{cpu.nucleos }}</li>
                 </ul>
             </div>
         </div>
