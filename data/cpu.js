@@ -10,7 +10,7 @@ db.cpus.insertMany([
     "img":"celeron_g3930.jpg",
     "nucleos":2,
 },{
-    "title":"Sempron 2650",
+    "name":"Sempron 2650",
     "fab":"AMD",
     "frequency":"1450MHz",
     "socket":"FS1b",
@@ -19,7 +19,7 @@ db.cpus.insertMany([
     "nucleos":2,
 },
 {
-    "title":"Pentium G4400",
+    "name":"Pentium G4400",
     "fab":"Intel",
     "frequency":"3300MHz",
     "socket":"LGA 1151",
@@ -28,7 +28,7 @@ db.cpus.insertMany([
     "nucleos":2,
 },
 {
-    "title":"Ryzen 3 1200",
+    "name":"Ryzen 3 1200",
     "fab":"AMD",
     "frequency":"3100MHz",
     "socket":"AM4",
@@ -37,7 +37,7 @@ db.cpus.insertMany([
     "nucleos":4,
 },
 {
-    "title":"Core i3-7350k",
+    "name":"Core i3-7350k",
     "fab":"Intel",
     "frequency":"4200MHz",
     "socket":"LGA 1151",
@@ -46,7 +46,7 @@ db.cpus.insertMany([
     "nucleos":2,
 },
 {
-    "title":"Core i3-8100",
+    "name":"Core i3-8100",
     "fab":"Intel",
     "frequency":"3600MHz",
     "socket":"LGA 1151-v2",
