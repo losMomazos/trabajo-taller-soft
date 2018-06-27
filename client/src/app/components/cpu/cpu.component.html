@@ -1,39 +1,44 @@
 <div class="row">
   <div class="col-4col-lg">
-        <div class="card">
-            <div class="card-body">
-                <form>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">Email address</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlSelect1">Example select</label>
-                      <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlSelect2">Example multiple select</label>
-                      <select multiple class="form-control" id="exampleFormControlSelect2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlTextarea1">Example textarea</label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                  </form>
-            </div>
-          </div>
+    <div class="card">
+      <div class="card-body">
+          <form >
+              <div class="form-group">
+                <label for="nombre"></label>
+                <input #nombre type="text" id="nombre" placeholder="Ingrese el nombre">
+              </div>
+              <button class="btn btn-danger"(click)="search(nombre.value)">submit</button>
+              <div class="form-group" >
+                <label for="socketSelection">Elige socket</label>
+                <br>
+                <select class="selectpicker" (change)="select($event)" id="socketSelection">
+                  <option></option>
+                  <option>LGA 1151-v2</option>
+                  <option>LGA 1151</option>
+                  <option>AM4</option>
+                </select>
+                <br>
+                <label for="fabSelection">Elige el fabricante</label>
+                <br>
+                <select class="selectpicker" (change)="select($event)" id="fabSelection">
+                  <option></option>
+                  <option>Intel</option>
+                  <option>AMD</option>
+                </select>
+                <br>
+                <label for="coreSelection">Cantidad de nucleos</label>
+                <br>
+                <select class="selectpicker" (change)="select($event)" id="coreSelection">
+                  <option></option>
+                  <option>2</option>
+                  <option>4</option>
+                </select>
+              </div>
+              <div>    
+              </div>
+            </form>    
+      </div>
+    </div>
   </div>
   <div class="col-8 col-lg">
     <table class="table">
@@ -45,7 +50,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cpu of cpus,index as i" >
+        <tr *ngFor="let cpu of cpusFilter,index as i" >
           <th scope="row">{{i+1}}</th>
           <td><a [routerLink]="['details/',cpu._id]">{{cpu.name}}</a></td>
           <td>{{cpu.socket}}</td>
