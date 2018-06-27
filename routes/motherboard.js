@@ -4,23 +4,16 @@ const Cpu = require('../models/cpu');
 const Motherboard = require('../models/motherboard');
 
 
-
+/**
+ *este metodo trae todas las motherboard que concuerden con un json query 
+ */
 router.get('/api/motherboard',(req,res,next)=>{
     var queryParameter = req.query;
-    console.log(queryParameter);
     Motherboard.find(queryParameter,(err,motherboards)=>{
         if(err) return res.status(500).send({msj:"Error al realizar la peticion "});
         if(!motherboards) return res.status(404).send({msj:" no hay motherboard "});
         res.status(200).json(motherboards);
     })
-
-    /*
-    Motherboard.find({},(err,motherboards)=>{
-        if(err) return res.status(500).send({msj:"Error al realizar la peticion "});
-        if(!motherboards) return res.status(404).send({msj:" no hay motherboard "});
-        res.status(200).json(motherboards);
-    })
-    */
 })
 router.get('/api/motherboard/:id',(req,res,next)=>{
     let id = req.params.id;

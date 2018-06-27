@@ -1,0 +1,25 @@
+
+<div class="row">
+    <div class="col-4">
+        <p *ngIf="mother1">{{mother1.name}}</p>
+        <p *ngIf="mother1">{{mother1.socket}}</p>
+        <p *ngIf="mother1">{{mother1.chipset}}</p>
+    </div>
+    <div class="col-4">
+        <form >
+            <div class="form-group col-md-4">
+                <label for="inputMother">State</label>
+                <select  (change)="searchMother($event)" id="inputMother" class="form-control">
+                    <option selected>Choose...</option>
+                    <option *ngFor="let mother of mothersForCompare">{{mother.name}}</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="col-4">
+        <p *ngIf="motherForComparison">{{motherForComparison.name}}</p>
+        <p *ngIf="motherForComparison">{{motherForComparison.socket}}</p>
+        <p *ngIf="motherForComparison">{{motherForComparison.chipset}}</p>
+    </div>
+</div>
+
