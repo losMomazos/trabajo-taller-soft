@@ -34,7 +34,6 @@ export class MotherboardComponent implements OnInit {
   ngOnInit() {
   }
   funciona(variable:string){
-    console.log(variable);
     this.motherboarsFilter = this.motherboars.filter(mother=>{
       return mother.name.toLocaleLowerCase().includes(variable.toLocaleLowerCase());
     })
