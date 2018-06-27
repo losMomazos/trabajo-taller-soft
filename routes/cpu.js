@@ -13,7 +13,8 @@ const Motherboard = require('../models/motherboard'); //model for a collection M
 router.get('/api/cpu',(req,res,next)=>{
     //atravez del modelo Cpu de mongoose se hacen llamadas a esta colleccion con el metodo find y resive 
     //un json como query y un callback, este ultimo resive un error y las cpus que devuelve el metodo
-    Cpu.find({},(err,cpus)=>{
+    var queryParameter = req.query;
+    Cpu.find(queryParameter,(err,cpus)=>{
         if(err) return res.status(500).send({msj:"Error al realizar la peticion "});
         if(!cpus) return res.status(404).send({msj:" no hay cpu "});
         res.status(200).json(cpus);

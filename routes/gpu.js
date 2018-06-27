@@ -5,7 +5,8 @@ const Motherboard = require('../models/motherboard');
 
 
 router.get('/api/gpu',(req,res,next)=>{
-    Gpu.find({},(err,gpus)=>{
+    var queryParameter = req.query;
+    Gpu.find(queryParameter,(err,gpus)=>{
         if(err) res.status(500).send({msj:"Error on server"})
         res.json(gpus);
     });
