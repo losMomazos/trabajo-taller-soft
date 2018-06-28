@@ -17,6 +17,7 @@
     </div>
 </div>
 <div class="row">
+<h2>Cpu conpatibles</h2>  
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -33,19 +34,20 @@
         </tr>
     </tbody>
 </table>
+<h2>Gpu Compatibles</h2>
 <table class="table">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Port</th>
+            <th scope="col">Puerto</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let gpu of gpuCompatibles,index as i">
             <th scope="row">{{i+1}}</th>
             <td><a>{{gpu.name}}</a></td>
-            <td>{{gpu.port}}</td>
+            <td>{{gpu.puerto}}</td>
         </tr>
     </tbody>
 </table>

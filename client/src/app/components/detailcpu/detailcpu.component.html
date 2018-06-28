@@ -15,19 +15,20 @@
     </div>
 </div>
 <div class="row">
+<h2>Motherboard Compatibles</h2>
 <table class="table">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Port</th>
+            <th scope="col">Puerto</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let mother of motherCompatibles,index as i">
             <th scope="row">{{i+1}}</th>
             <td><a>{{mother.name}}</a></td>
-            <td>{{mother.port}}</td>
+            <td>{{mother.puerto}}</td>
         </tr>
     </tbody>
 </table>
