@@ -1,0 +1,18 @@
+#cover{
+    background: #222 url("https://png.pngtree.com/thumb_back/fw800/back_pic/00/04/05/355620cebeac156.jpg") center center no-repeat;
+    background-size: cover;
+    color: white;
+    height: 150%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+#acerca-de{
+    background: url("/assets/img/liquida.jpg") center center no-repeat;
+    background-size: cover;
+}
+.texto-acerca-de{
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 1.875rem;
+}
