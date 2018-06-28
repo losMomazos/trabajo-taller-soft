@@ -1,13 +1,20 @@
 
 <div class="row">
     <div class="col-4">
-        <p *ngIf="mother1">{{mother1.name}}</p>
-        <p *ngIf="mother1">{{mother1.socket}}</p>
-        <p *ngIf="mother1">{{mother1.chipset}}</p>
+        <div class="card">
+        <div class="card-body">
+        <p *ngIf="mother1">nombre: {{mother1.name}}</p>
+        <p *ngIf="mother1">socket: {{mother1.socket}}</p>
+        <p *ngIf="mother1">chipset: {{mother1.chipset}}</p>
+        <p *ngIf="mother1">puerto: {{mother1.puerto}}</p>
+        <p *ngIf="mother1">format: {{mother1.format}}</p>
+        <p *ngIf="mother1">fabricante: {{mother1.fab}}</p>
+        </div>
+        </div>
     </div>
     <div class="col-4">
         <form >
-            <div class="form-group col-md-4">
+            <div class="form-group ">
                 <label for="inputMother">State</label>
                 <select  (change)="searchMother($event)" id="inputMother" class="form-control">
                     <option selected>Choose...</option>
@@ -17,9 +24,16 @@
         </form>
     </div>
     <div class="col-4">
-        <p *ngIf="motherForComparison">{{motherForComparison.name}}</p>
-        <p *ngIf="motherForComparison">{{motherForComparison.socket}}</p>
-        <p *ngIf="motherForComparison">{{motherForComparison.chipset}}</p>
+        <div *ngIf="motherForComparison" class="card">
+        <div *ngIf="motherForComparison" class="card-body">
+        <p *ngIf="motherForComparison">nombre: {{motherForComparison.name}}</p>
+        <p *ngIf="motherForComparison">socket: {{motherForComparison.socket}}</p>
+        <p *ngIf="motherForComparison">chipset: {{motherForComparison.chipset}}</p>
+        <p *ngIf="motherForComparison">puerto: {{motherForComparison.puerto}}</p>
+        <p *ngIf="motherForComparison">formato: {{motherForComparison.format}}</p>
+        <p *ngIf="motherForComparison">fabricante: {{motherForComparison.fab}}</p>
+        </div>
+        </div>
     </div>
 </div>
 

@@ -1,0 +1,34 @@
+
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+        <div class="card-body">
+        <p *ngIf="gpu1">Nombre: {{gpu1.name}}</p>
+        <p *ngIf="gpu1">Puerto: {{gpu1.puerto}}</p>
+        <p *ngIf="gpu1">Memoria: {{gpu1.memory}}</p>
+        <p *ngIf="gpu1">Fabricante: {{gpu1.fab}}</p>
+        </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <form >
+            <div class="form-group">
+                <label for="inputGpu">Elige gpu</label>
+                <select  (change)="searchGpu($event)" id="inputGpu" class="form-control">
+                    <option selected>Elige...</option>
+                    <option *ngFor="let gpu of gpusForCompare">{{gpu.name}}</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="col-4">
+        <div *ngIf="gpuForComparison" class="card">
+        <div *ngIf="gpuForComparison" class="card-body">
+        <p *ngIf="gpuForComparison">Nombre: {{gpuForComparison.name}}</p>
+        <p *ngIf="gpuForComparison">Puerto: {{gpuForComparison.puerto}}</p>
+        <p *ngIf="gpuForComparison">Memoria: {{gpuForComparison.memory}}</p>
+        <p *ngIf="gpuForComparison">Fabricante: {{gpuForComparison.fab}}</p>
+        </div>
+        </div>
+    </div>
+</div>

@@ -37,6 +37,7 @@
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Socket</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -44,6 +45,7 @@
           <th scope="row">{{i+1}}</th>
           <td><a [routerLink]="['details/',gpu._id]">{{gpu.name}}</a></td>
           <td>{{gpu.puerto}}</td>
+          <td><a [routerLink]="['compare/',gpu._id]">compare</a></td>
         </tr>
       </tbody>
     </table>  

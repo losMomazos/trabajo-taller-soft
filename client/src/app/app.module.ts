@@ -17,12 +17,16 @@ import { DetailcpuComponent } from './components/detailcpu/detailcpu.component';
 import { DetailgpuComponent } from './components/detailgpu/detailgpu.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { CompareComponent } from './components/compare/compare.component';
+import { CompareCpuComponent } from './components/compare-cpu/compare-cpu.component';
+import { CompareGpuComponent } from './components/compare-gpu/compare-gpu.component';
 
 const routes:Routes=[
   {path:'',component:InicioComponent },
   {path:'motherboard',component:MotherboardComponent},
   {path:'motherboard/details/:id',component:DetailsComponent},
   {path:'motherboard/compare/:id',component:CompareComponent},
+  {path:'cpu/compare/:id',component:CompareCpuComponent},
+  {path:'gpu/compare/:id',component:CompareGpuComponent},
   {path:'cpu',component:CpuComponent},
   {path:'cpu/details/:id',component:DetailcpuComponent},
   {path:'gpu',component:GpuComponent},
@@ -43,6 +47,8 @@ const routes:Routes=[
     DetailcpuComponent,
     DetailgpuComponent,
     CompareComponent,
+    CompareCpuComponent,
+    CompareGpuComponent,
     
   ],
   imports: [
