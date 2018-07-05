@@ -72,6 +72,26 @@ router.post('/api/cpu',(req,res,next)=>{
         res.status(200).send({cpuStore});
     })
 })
+
+router.put('/api/cpud/:id',(req,res,next)=>{
+    let id = req.params.id;
+    let update = req.body;
+    Cpu.findByIdAndUpdate(id,update,(err,cpuUpdate)=>{
+        if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
+        res.status(200).send({cpu:cpuUpdate});
+    })
+})
+router.delete('/api/cpu/:id',(req,res,next)=>{
+    let id = req.params.id;
+    Cpu.findById(id,(err,cpu)=>{
+        if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
+        cpu.remove(err=>{
+            if(err) res.status(500).send({msj:"Error del servidor"});
+            res.status(200).send({msj:'cpu borrada'})
+        })
+    })
+})
+
 /**
  * exporta el modulo para ser llamado desde el index.js 
  */

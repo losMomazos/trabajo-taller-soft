@@ -49,5 +49,23 @@ router.post('/api/gpu',(req,res,next)=>{
     })
 })
 
+router.put('/api/gpu/:id',(req,res,next)=>{
+    let id = req.params.id;
+    let update = req.body;
+    Gpu.findByIdAndUpdate(id,update,(err,gpuUpdate)=>{
+        if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
+        res.status(200).send({gpu:gpuUpdate});
+    })
+})
+router.delete('/api/gpu/:id',(req,res,next)=>{
+    let id = req.params.id;
+    Gpu.findById(id,(err,gpu)=>{
+        if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
+        motherboard.remove(err=>{
+            if(err) res.status(500).send({msj:"Error del servidor"});
+            res.status(200).send({msj:'gpu borrada'})
+        })
+    })
+})
 
 module.exports = router;
