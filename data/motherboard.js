@@ -3,6 +3,7 @@ db.motherboards.drop();
 db.motherboards.insertMany([
     {
         "name":"H310M-G/M.2",
+        "year":2018,
         "socket":"LGA 1151-v2",
         "chipset":"Intel H310",
         "category":"Motherboard",
@@ -13,6 +14,7 @@ db.motherboards.insertMany([
     },
     {
         "name":"B250M PRO-VH",
+        "year":2017,
         "socket":"LGA 1151",
         "chipset":"Intel B250",
         "category":"Motherboard",
@@ -23,6 +25,7 @@ db.motherboards.insertMany([
     },
     {
         "name":"A320M GAMING PRO",
+        "year":2017,
         "socket":"AM4",
         "chipset":"AMD A320",
         "category":"Motherboard",
@@ -33,6 +36,7 @@ db.motherboards.insertMany([
     },
     {
         "name":"C7H270-CG-ML",
+        "year":2017,
         "socket":"LGA 1151",
         "chipset":"Intel H270",
         "category":"Motherboard",
