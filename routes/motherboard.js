@@ -2,7 +2,22 @@ var router = require('express').Router();
 const Gpu = require('../models/gpu');
 const Cpu = require('../models/cpu');
 const Motherboard = require('../models/motherboard');
-
+const jwt = require('jsonwebtoken');
+function verifyToken(req,res,next){
+    if(!req.headers.authorization){
+        return res.status(401).send('Unauthorized request');
+    }
+    let token = req.headers.authorization.split(' ')[1];
+    if(token==='null'){
+        return res.status(401).send('Unauthorized request');
+    }
+    let payload = jwt.verify(token,'secretkey');
+    if(!payload){
+        return res.status(401).send('Unauthorized request');
+    }
+    req.userId = payload.subject;
+    next();
+}
 
 /**
  *este metodo trae todas las motherboard que concuerden con un json query 
@@ -50,7 +65,7 @@ router.get('/api/motherboard/compatibilidadgpu/:id',(req,res,next)=>{
 })
 
 
-router.post('/api/motherboard',(req,res,next)=>{
+router.post('/api/motherboard',verifyToken,(req,res,next)=>{
     console.log(req.body);
     let motherboard = new Motherboard();
     motherboard.name = req.body.name;
@@ -67,7 +82,7 @@ router.post('/api/motherboard',(req,res,next)=>{
         res.status(200).send({product:motherboardStore});
     })
 })
-router.put('/api/motherboard/:id',(req,res,next)=>{
+router.put('/api/motherboard/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
     let update = req.body;
     Motherboard.findByIdAndUpdate(id,update,(err,motherboardUpdate)=>{
@@ -75,7 +90,7 @@ router.put('/api/motherboard/:id',(req,res,next)=>{
         res.status(200).send({motherboard:motherboardUpdate});
     })
 })
-router.delete('/api/motherboard/:id',(req,res,next)=>{
+router.delete('/api/motherboard/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
     Motherboard.findById(id,(err,motherboard)=>{
         if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
