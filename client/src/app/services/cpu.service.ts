@@ -38,4 +38,8 @@ export class CpuService {
     return this.http.get<Cpu[]>(`${this.domain}/api/cpu`,{params:params})
     .pipe(map(res=>res));
   }
+  deleteCpu(id){
+    return this.http.delete<Cpu>(`${this.domain}/api/cpu/${id}`)
+    .pipe(map(res=>res));
+  }
 }

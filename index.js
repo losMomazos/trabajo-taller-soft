@@ -12,6 +12,7 @@ const routeMotherboard = require('./routes/motherboard');
 const routeCpu = require('./routes/cpu');
 const routeGpu = require('./routes/gpu');
 const routeUser = require('./routes/user');
+const path = require('path');
 const port = process.env.PORT || 3000;
 //middlewares
 app.use(cors());
@@ -23,6 +24,8 @@ app.use('/',routeMotherboard);
 app.use('/',routeCpu);
 app.use('/',routeGpu);
 app.use('/',routeUser);
+
+app.use(express.static(path.join(__dirname,'dist/client')))
 //conecto to mongoDb 
 mongoose.connect('mongodb://localhost:27017/meme',(err,res)=>{
     if(err) return console.log(`Error to connect ${err}`);

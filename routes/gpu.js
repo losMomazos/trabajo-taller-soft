@@ -2,7 +2,22 @@ const router = require('express').Router();
 const Gpu = require('../models/gpu');
 const Cpu = require('../models/cpu');
 const Motherboard = require('../models/motherboard');
-
+const jwt = require('jsonwebtoken');
+function verifyToken(req,res,next){
+    if(!req.headers.authorization){
+        return res.status(401).send('Unauthorized request');
+    }
+    let token = req.headers.authorization.split(' ')[1];
+    if(token==='null'){
+        return res.status(401).send('Unauthorized request');
+    }
+    let payload = jwt.verify(token,'secretkey');
+    if(!payload){
+        return res.status(401).send('Unauthorized request');
+    }
+    req.userId = payload.subject;
+    next();
+}
 
 router.get('/api/gpu',(req,res,next)=>{
     var queryParameter = req.query;
@@ -48,6 +63,20 @@ router.post('/api/gpu',(req,res,next)=>{
         res.json(gpuSaved);
     })
 })
-
+router.put('/api/gpu/:id',verifyToken,(req,res,next)=>{
+    let id = req.params.id;
+    let update = req.body;
+    Gpu.findByIdAndUpdate(id,update,(err,gpuUpdate)=>{
+        if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
+        res.status(200).send({motherboard:gpuUpdate});
+    })
+})
+router.delete('/api/gpu/:id',verifyToken,(req,res,next)=>{
+    let id = req.params.id;
+    Gpu.findOneAndRemove(id,(err,doc)=>{
+        if(err) res.status(500).send({msj:'Erro al eliminar'})
+        res.status(200).json(doc);
+    })
+})
 
 module.exports = router;

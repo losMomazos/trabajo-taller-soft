@@ -34,4 +34,8 @@ export class GpuService {
     return this.http.get<Gpu[]>(`${this.domain}/api/gpu`,{params:params})
     .pipe(map(res=>res));
   }
+  deleteGpu(id){
+    return this.http.delete<any>(`${this.domain}/api/gpu/:id`)
+    .pipe(map(res=>res));
+  }
 }

@@ -92,12 +92,9 @@ router.put('/api/motherboard/:id',verifyToken,(req,res,next)=>{
 })
 router.delete('/api/motherboard/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
-    Motherboard.findById(id,(err,motherboard)=>{
-        if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
-        motherboard.remove(err=>{
-            if(err) res.status(500).send({msj:"Error del servidor"});
-            res.status(200).send({msj:'motherboard borrada'})
-        })
+    Motherboard.findOneAndRemove(id,(error,doc)=>{
+        if(err) res.status(500).send({msj:'Erro al eliminar'})
+        res.status(200).json(doc);
     })
 })
 module.exports = router;
