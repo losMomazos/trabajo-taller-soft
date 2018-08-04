@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -19,9 +19,15 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { CompareComponent } from './components/compare/compare.component';
 import { CompareCpuComponent } from './components/compare-cpu/compare-cpu.component';
 import { CompareGpuComponent } from './components/compare-gpu/compare-gpu.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { CrudComponent } from './components/crud/crud.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './auth.guard';
+import {TokenInterceptorService} from './services/token-interceptor.service'
 const routes:Routes=[
   {path:'',component:InicioComponent },
+  {path:'login',component:LoginComponent},
+  {path:'crud',component:CrudComponent,canActivate:[AuthGuard]},
   {path:'motherboard',component:MotherboardComponent},
   {path:'motherboard/details/:id',component:DetailsComponent},
   {path:'motherboard/compare/:id',component:CompareComponent},
@@ -49,6 +55,8 @@ const routes:Routes=[
     CompareComponent,
     CompareCpuComponent,
     CompareGpuComponent,
+    LoginComponent,
+    CrudComponent,
     
   ],
   imports: [
@@ -60,7 +68,8 @@ const routes:Routes=[
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [MotherService,CpuService,GpuService],
+  providers: [MotherService,CpuService,GpuService,AuthService,AuthGuard,
+    {provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
