@@ -10,6 +10,15 @@ import {MotherService} from '../../services/mother.service';
 export class CrudComponent implements OnInit {
   todo:any[];
   thing:String='';
+  cpu:string="cpu";
+  gpu:string="gpu";
+  mother:string="mother";
+  cpuAdd={category:'Cpu'};
+  gpuAdd={};
+  motherAdd={};
+  choiceCpu:boolean=false;
+  choiceGpu:boolean=false;
+  choiceMother:boolean=false;
   constructor(private _gpuService:GpuService,private _cpuService:CpuService,private _motherService:MotherService) { 
       this._cpuService.getCpus()
       .subscribe(cpu=>{
@@ -41,7 +50,7 @@ export class CrudComponent implements OnInit {
           .subscribe(data=>{
             console.log(data);
             let i=0;
-            while(i<this.todo.length && this.todo[i]._id==id){
+            while(i<this.todo.length && this.todo[i]._id==data._id){
               i++;
             }
             this.todo.splice(i, 1); 
@@ -53,17 +62,70 @@ export class CrudComponent implements OnInit {
           console.log(data.id);
           if(data.n == 1) {
             for(let i = 0; i < this.todo.length; i++) {
-              if(this.todo[i]._id == id) {
+              if(this.todo[i]._id == data._id) {
                 this.todo.splice(i, 1);
               }
             }
-}
-          
+          }   
         })
       }else{
-        
+        this._motherService.deleteMother(id)
+        .subscribe(data=>{
+          console.log(data.id);
+          if(data.n == 1) {
+            for(let i = 0; i < this.todo.length; i++) {
+              if(this.todo[i]._id == data._id) {
+                this.todo.splice(i, 1);
+              }
+            }
+          }   
+        })
       }
 
+    }
+  }
+
+
+
+  choiceForm(category){
+    if(category==="cpu"){
+      this.choiceCpu=true;
+      this.choiceGpu=false;
+      this.choiceMother=false;
+    }
+    if(category==="gpu"){
+      this.choiceCpu=false;
+      this.choiceGpu=true;
+      this.choiceMother=false;
+    }
+    if(category==="mother"){
+      this.choiceCpu=false;
+      this.choiceGpu=false;
+      this.choiceMother=true;
+    }
+  }
+
+  muestraCpuForm(){
+    return this.choiceCpu && !this.choiceGpu && !this.choiceMother;
+  }
+  muestraGpuForm(){
+    return this.choiceGpu && !this.choiceCpu && !this.choiceMother;
+  }
+  muestraMotherForm(){
+    return !this.choiceCpu && !this.choiceGpu && this.choiceMother;
+  }
+
+  resetCpu(){
+    this.cpuAdd={category:'Cpu'};
+  }
+
+  add(){
+    if(this.muestraCpuForm()){
+      this._cpuService.addCpu(this.cpuAdd)
+      .subscribe(cpu=>{
+        this.todo.push(cpu);
+        this.resetCpu();
+      })
     }
   }
 }

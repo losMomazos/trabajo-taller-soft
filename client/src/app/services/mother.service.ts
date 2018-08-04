@@ -43,4 +43,8 @@ export class MotherService {
     return this.http.get<Gpu[]>(`${this.domain}/api/motherboard/compatibilidadgpu/${id}`)
     .pipe(map(res=>res));
   }
+  deleteMother(id){
+    return this.http.get<any>(`${this.domain}/api/motherboard/${id}`)
+    .pipe(map(res=>res));
+  }
 }

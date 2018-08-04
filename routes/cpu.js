@@ -83,9 +83,9 @@ router.post('/api/cpu',(req,res,next)=>{
     cpu.nucleos = req.body.nucleos;
     cpu.frequency = req.body.frequency;
 
-    cpu.save((err,cpuStore)=>{
+    cpu.save((err,cpu)=>{
         if(err) res.status(500).send({msj:`Error to save ${err}` })
-        res.status(200).send({cpuStore});
+        res.status(200).send({cpu});
     })
 })
 router.put('/api/cpu/:id',verifyToken,(req,res,next)=>{

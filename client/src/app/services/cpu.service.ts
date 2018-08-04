@@ -39,7 +39,11 @@ export class CpuService {
     .pipe(map(res=>res));
   }
   deleteCpu(id){
-    return this.http.delete<Cpu>(`${this.domain}/api/cpu/${id}`)
+    return this.http.delete<any>(`${this.domain}/api/cpu/${id}`)
     .pipe(map(res=>res));
+  }
+  addCpu(newCpu){
+    return this.http.post<any>(`${this.domain}/api/cpu`,newCpu)
+    .pipe(map(res=>res))
   }
 }
