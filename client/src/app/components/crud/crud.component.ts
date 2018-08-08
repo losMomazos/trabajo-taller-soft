@@ -123,7 +123,7 @@ export class CrudComponent implements OnInit {
     if(this.muestraCpuForm()){
       this._cpuService.addCpu(this.cpuAdd)
       .subscribe(cpu=>{
-        this.todo.push(cpu.cpu);
+        this.todo.push(cpu);
         this.resetCpu();
       })
     }else if(this.muestraGpuForm()){

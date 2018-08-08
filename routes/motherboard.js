@@ -92,7 +92,7 @@ router.put('/api/motherboard/:id',verifyToken,(req,res,next)=>{
 router.delete('/api/motherboard/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
     Motherboard.findOneAndRemove(id,(error,doc)=>{
-        if(error) res.status(500).send({msj:'Erro al eliminar'})
+        if(error) res.status(500).send({msj:'Error   al eliminar'})
         res.status(200).json(doc);
     })
 })

@@ -85,7 +85,7 @@ router.post('/api/cpu',(req,res,next)=>{
 
     cpu.save((err,cpu)=>{
         if(err) res.send({msj:`Error to save ${err}` })
-        res.send({cpu});
+        res.json(cpu);
     })
 })
 router.put('/api/cpu/:id',verifyToken,(req,res,next)=>{
@@ -101,7 +101,6 @@ router.delete('/api/cpu/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
     Cpu.findByIdAndRemove(id,(err,doc)=>{
         if(err) res.status(500).send({msj:'Erro al eliminar'})
-        console.log('cpu eliminada en el servidor'+doc);
         res.status(200).json(doc);
     })
 })
