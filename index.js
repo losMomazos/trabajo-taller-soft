@@ -27,7 +27,7 @@ app.use('/',routeUser);
 
 app.use(express.static(path.join(__dirname,'dist/client')))
 //conecto to mongoDb
-mongoose.connect('mongodb://<anti>:<#Damaris27>@ds059471.mlab.com:59471/meme',(err,res)=>{
+mongoose.connect('mongodb://anti:Damaris27@ds059471.mlab.com:59471/meme',(err,res)=>{
     if(err) return console.log(`Error to connect ${err}`);
     console.log('mongoDB running...');
     //run de server
