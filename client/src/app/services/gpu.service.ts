@@ -38,4 +38,8 @@ export class GpuService {
     return this.http.delete<any>(`${this.domain}/api/gpu/${id}`)
     .pipe(map(res=>res));
   }
+  addGpu(newGpu){
+    return this.http.post<any>(`${this.domain}/api/gpu`,newGpu)
+    .pipe(map(res=>res))
+  }
 }

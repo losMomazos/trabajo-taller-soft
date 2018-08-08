@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CpuService {
-  
+
   domain:string = "http://localhost:3000";
   constructor(private http:HttpClient) { }
 
@@ -43,6 +43,7 @@ export class CpuService {
     .pipe(map(res=>res));
   }
   addCpu(newCpu){
+    console.log(newCpu);  
     return this.http.post<any>(`${this.domain}/api/cpu`,newCpu)
     .pipe(map(res=>res))
   }

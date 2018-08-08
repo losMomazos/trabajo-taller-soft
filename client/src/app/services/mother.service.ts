@@ -14,7 +14,7 @@ export class MotherService {
   getMother(){
     return this.http.get<Motherboard[]>(`${this.domain}/api/motherboard`)
     .pipe(map(res=>res));
-    
+
   }
   getMotherParameters(parametros:any[]){
     let params = new HttpParams();
@@ -44,7 +44,11 @@ export class MotherService {
     .pipe(map(res=>res));
   }
   deleteMother(id){
-    return this.http.get<any>(`${this.domain}/api/motherboard/${id}`)
+    return this.http.delete<any>(`${this.domain}/api/motherboard/${id}`)
     .pipe(map(res=>res));
+  }
+  addMother(newMother){
+    return this.http.post<any>(`${this.domain}/api/motherboard`,newMother)
+    .pipe(map(res=>res))
   }
 }

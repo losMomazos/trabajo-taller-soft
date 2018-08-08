@@ -26,7 +26,7 @@ app.use('/',routeGpu);
 app.use('/',routeUser);
 
 app.use(express.static(path.join(__dirname,'dist/client')))
-//conecto to mongoDb 
+//conecto to mongoDb
 mongoose.connect('mongodb://localhost:27017/meme',(err,res)=>{
     if(err) return console.log(`Error to connect ${err}`);
     console.log('mongoDB running...');

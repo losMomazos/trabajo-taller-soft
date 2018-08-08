@@ -20,7 +20,7 @@ function verifyToken(req,res,next){
 }
 
 /**
- *este metodo trae todas las motherboard que concuerden con un json query 
+ *este metodo trae todas las motherboard que concuerden con un json query
  */
 router.get('/api/motherboard',(req,res,next)=>{
     var queryParameter = req.query;
@@ -48,7 +48,7 @@ router.get('/api/motherboard/compatibilidadcpu/:id',(req,res,next)=>{
             if(err) return res.status(200).send({msj:"Error en el servidor"});
             if(!cpus) return res.status(404).send({msj:"Error no hay cpu compatibles"})
             res.json(cpus);
-        })        
+        })
     })
 })
 router.get('/api/motherboard/compatibilidadgpu/:id',(req,res,next)=>{
@@ -58,15 +58,14 @@ router.get('/api/motherboard/compatibilidadgpu/:id',(req,res,next)=>{
         if(!motherboard) return res.status(404).send({msj:"la motherboard no existe "});
         Gpu.find({puerto:motherboard.puerto},(err,gpus)=>{
             if(err) return res.status(200).send({msj:"Error en el servidor"});
-            if(!gpus) return res.status(404).send({msj:"Error no hay gpu compatibles"}) 
+            if(!gpus) return res.status(404).send({msj:"Error no hay gpu compatibles"})
             res.json(gpus);
-        })        
+        })
     })
 })
 
 
 router.post('/api/motherboard',verifyToken,(req,res,next)=>{
-    console.log(req.body);
     let motherboard = new Motherboard();
     motherboard.name = req.body.name;
     motherboard.socket = req.body.socket;
@@ -79,7 +78,7 @@ router.post('/api/motherboard',verifyToken,(req,res,next)=>{
 
     motherboard.save((err,motherboardStore)=>{
         if(err) res.status(500).send({msj:`Error to save ${err}` })
-        res.status(200).send({product:motherboardStore});
+        res.json(motherboardStore);
     })
 })
 router.put('/api/motherboard/:id',verifyToken,(req,res,next)=>{
@@ -93,7 +92,7 @@ router.put('/api/motherboard/:id',verifyToken,(req,res,next)=>{
 router.delete('/api/motherboard/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
     Motherboard.findOneAndRemove(id,(error,doc)=>{
-        if(err) res.status(500).send({msj:'Erro al eliminar'})
+        if(error) res.status(500).send({msj:'Erro al eliminar'})
         res.status(200).json(doc);
     })
 })

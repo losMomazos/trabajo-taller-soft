@@ -27,7 +27,7 @@ function verifyToken(req,res,next){
 //el metodo router de express , usa su metodo get , teniendo como parametros una URI y una funcion
 //esta funcion resive como parametro un objeto request , un objeto response y un objeto next
 router.get('/api/cpu',(req,res,next)=>{
-    //atravez del modelo Cpu de mongoose se hacen llamadas a esta colleccion con el metodo find y resive 
+    //atravez del modelo Cpu de mongoose se hacen llamadas a esta colleccion con el metodo find y resive
     //un json como query y un callback, este ultimo resive un error y las cpus que devuelve el metodo
     var queryParameter = req.query;
     Cpu.find(queryParameter,(err,cpus)=>{
@@ -53,7 +53,7 @@ router.get('/api/cpu/:id',(req,res,next)=>{
     })
 })
 /*
- * este metodo busca primero una cpu y teniendo esa cpu busca las motherboard que tengan el mismo socket 
+ * este metodo busca primero una cpu y teniendo esa cpu busca las motherboard que tengan el mismo socket
  * resive objetos request , response y next
  */
 router.get('/api/cpu/compatibilidadmother/:id',(req,res,next)=>{
@@ -65,7 +65,7 @@ router.get('/api/cpu/compatibilidadmother/:id',(req,res,next)=>{
             if(err) return res.status(200).send({msj:"Error en el servidor"});
             if(!motherboards) return res.status(404).send({msj:"Error no hay motherboard compatibles"})
             res.json(motherboards);
-        })        
+        })
     })
 })
 /**
@@ -84,8 +84,8 @@ router.post('/api/cpu',(req,res,next)=>{
     cpu.frequency = req.body.frequency;
 
     cpu.save((err,cpu)=>{
-        if(err) res.status(500).send({msj:`Error to save ${err}` })
-        res.status(200).send({cpu});
+        if(err) res.send({msj:`Error to save ${err}` })
+        res.send({cpu});
     })
 })
 router.put('/api/cpu/:id',verifyToken,(req,res,next)=>{
@@ -99,12 +99,13 @@ router.put('/api/cpu/:id',verifyToken,(req,res,next)=>{
 
 router.delete('/api/cpu/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
-    Cpu.findOneAndRemove(id,(err,doc)=>{
+    Cpu.findByIdAndRemove(id,(err,doc)=>{
         if(err) res.status(500).send({msj:'Erro al eliminar'})
+        console.log('cpu eliminada en el servidor'+doc);
         res.status(200).json(doc);
     })
 })
 /**
- * exporta el modulo para ser llamado desde el index.js 
+ * exporta el modulo para ser llamado desde el index.js
  */
 module.exports = router;

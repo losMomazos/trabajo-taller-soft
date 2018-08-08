@@ -32,7 +32,7 @@ router.get('/api/gpu/:id',(req,res,next)=>{
     Gpu.findById(id,(err,gpu)=>{
         if(err) throw err;
         if(!gpu) return res.status(404).send({msj:"Erro la gpu no existe "});
-        res.json(gpu); 
+        res.json(gpu);
     })
 })
 router.get('/api/gpu/compatibilidadmother/:id',(req,res,next)=>{
@@ -44,13 +44,13 @@ router.get('/api/gpu/compatibilidadmother/:id',(req,res,next)=>{
             if(err) return res.status(200).send({msj:"Error en el servidor"});
             if(!motherboards) return res.status(404).send({msj:"Error no hay motherboard compatibles"})
             res.json(motherboards);
-        })        
+        })
     })
 })
 
 router.post('/api/gpu',(req,res,next)=>{
     let gpu = new Gpu();
-    
+
     gpu.name =  req.body.name;
     gpu.puerto =  req.body.puerto;
     gpu.category =  req.body.category;

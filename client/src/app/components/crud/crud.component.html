@@ -10,51 +10,121 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let thing of todo">
-                    <td>{{ thing.name }}</td>
+                  <tr *ngFor="let element of todo">
+                    <td>{{ element.name }}</td>
                     <td>
-                      <button class="btn btn-danger" (click)="deleteThing(thing)">
-                      </button>
+                      <button class="btn btn-danger" (click)="deleteThing(element)">Eliminar</button>
                     </td>
                   </tr>
                 </tbody>
               </table>
         </div>
-    
+        <br>
+
         <div class="col-6">
-            <button  class="btn btn-primary" (click)="choiceForm(cpu)">agregar cpu</button>
-            <button  class="btn btn-primary" (click)="choiceForm(gpu)">agregar gpu</button>
+            <button  class="btn btn-primary mr-2" (click)="choiceForm(cpu)">agregar cpu</button>
+            <button  class="btn btn-primary mr-2" (click)="choiceForm(gpu)">agregar gpu</button>
             <button  class="btn btn-primary" (click)="choiceForm(mother)">agregar motherboard</button>
             <div *ngIf="muestraCpuForm()" class="card m-3">
                     <div class="card-body">
                       <form (submit)="add($event)">
                         <div class="input-group">
-                            <input type="text" [(ngModel)]="cpuAdd.name" name="cpuAdd.name" class="form-control" placeholder="Nombre cpu">   
+                            <input type="text" [(ngModel)]="cpuAdd.name" name="cpuAdd.name" class="form-control" placeholder="Nombre cpu">
                         </div>
                         <br>
                         <div class="input-group">
-                            <input type="text" [(ngModel)]="cpuAdd.fab" name="cpuAdd.fab" class="form-control" placeholder="Ingrese Fabricante">   
+                            <input type="text" [(ngModel)]="cpuAdd.fab" name="cpuAdd.fab" class="form-control" placeholder="Ingrese Fabricante">
                         </div>
                         <br>
                         <div class="input-group">
-                            <input type="text" [(ngModel)]="cpuAdd.frecuency" name="cpuAdd.frecuency" class="form-control" placeholder="Ingrese la frecuencia">   
+                            <input type="text" [(ngModel)]="cpuAdd.frecuency" name="cpuAdd.frecuency" class="form-control" placeholder="Ingrese la frecuencia">
                         </div>
                         <br>
                         <div class="input-group">
-                            <input type="text" [(ngModel)]="cpuAdd.socket" name="cpuAdd.socket" class="form-control" placeholder="Ingrese socket">   
+                            <input type="text" [(ngModel)]="cpuAdd.socket" name="cpuAdd.socket" class="form-control" placeholder="Ingrese socket">
                         </div>
                         <br>
                         <div class="input-group">
-                            <input type="text" [(ngModel)]="cpuAdd.img" name="cpuAdd.img" class="form-control" placeholder="Nombre de la imagen">   
+                            <input type="text" [(ngModel)]="cpuAdd.img" name="cpuAdd.img" class="form-control" placeholder="Nombre de la imagen">
                         </div>
                         <br>
                         <div class="input-group">
-                                <input type="text" [(ngModel)]="cpuAdd.nucleos" name="cpuAdd.nucleos" class="form-control" placeholder="Cantidad de nucleos">   
+                                <input type="text" [(ngModel)]="cpuAdd.nucleos" name="cpuAdd.nucleos" class="form-control" placeholder="Cantidad de nucleos">
                             </div>
                             <br>
                         <span class="input-group-addon">
                                 <button type="submit" class="btn btn-primary">
                                     Agregar Cpu
+                                  </button>
+                            </span>
+                        </form>
+                    </div>
+            </div>
+            <div *ngIf="muestraGpuForm()" class="card m-3">
+                    <div class="card-body">
+                      <form (submit)="add($event)">
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="gpuAdd.name" name="gpuAdd.name" class="form-control" placeholder="Nombre gpu">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="gpuAdd.fab" name="gpuAdd.fab" class="form-control" placeholder="Ingrese Fabricante">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="gpuAdd.puerto" name="gpuAdd.puerto" class="form-control" placeholder="Ingrese el puerto">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="gpuAdd.memory" name="gpuAdd.memory" class="form-control" placeholder="Ingrese Memory">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="gpuAdd.img" name="gpuAdd.img" class="form-control" placeholder="Nombre de la imagen">
+                        </div>
+                        <br>
+                        <span class="input-group-addon">
+                                <button type="submit" class="btn btn-primary">
+                                    Agregar Gpu
+                                  </button>
+                            </span>
+                        </form>
+                    </div>
+            </div>
+            <div *ngIf="muestraMotherForm()" class="card m-3">
+                    <div class="card-body">
+                      <form (submit)="add($event)">
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="motherAdd.name" name="motherAdd.name" class="form-control" placeholder="Nombre motherboard">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="motherAdd.fab" name="motherAdd.fab" class="form-control" placeholder="Ingrese Fabricante">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="motherAdd.format" name="motherAdd.format" class="form-control" placeholder="Ingrese el formato">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="motherAdd.socket" name="motherAdd.socket" class="form-control" placeholder="Ingrese socket">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="motherAdd.img" name="motherAdd.img" class="form-control" placeholder="Nombre de la imagen">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                                <input type="text" [(ngModel)]="motherAdd.chipset" name="motherAdd.chipset" class="form-control" placeholder="Ingrese chipset">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                                <input type="text" [(ngModel)]="motherAdd.puerto" name="motherAdd.puerto" class="form-control" placeholder="Ingrese el puerto">
+                        </div>
+                        <br>
+                        <span class="input-group-addon">
+                                <button type="submit" class="btn btn-primary">
+                                    Agregar Motherboard
                                   </button>
                             </span>
                         </form>
