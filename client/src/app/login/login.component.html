@@ -1,0 +1,18 @@
+
+<form class="form-signin">
+  <h3>Welcome to Pinostock</h3>
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <label for="inputEmail" class="sr-only">Email address</label>
+     <input name="email" [(ngModel)] = "user.username" type="email" id="inputEmail" class="form-control" placeholder="enter Username" required autofocus>
+     <label for="inputPassword" class="sr-only">Password</label>
+     <input name="password" [(ngModel)] = "user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+     <div class="checkbox">
+       <label>
+         <input type="checkbox" value="remember-me"> Remember me
+       </label>
+     </div>
+<button class="btn btn-primary" (click)="validateLogin();" type="button">Sign in!!!</button>
+<input type="button" class="btn btn-success" onClick="location.href=  'http://localhost:4200/register'" value="Sign up??">
+
+
+</form>
