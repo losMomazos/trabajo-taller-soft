@@ -57,6 +57,11 @@ router.post('/api/gpu',(req,res,next)=>{
     gpu.img =  req.body.img;
     gpu.fab = req.body.fab;
     gpu.memory = req.body.memory;
+    gpu.peso = req.body.peso;
+    gpu.cuda = req.body.cuda;
+    gpu.nucleoscuda = req.body.nucleoscuda;
+    gpu.versiondi = req.body.versiondi;
+    gpu.versionopl = req.body.versionopl;
 
     gpu.save((err,gpuSaved)=>{
         if(err) throw err;

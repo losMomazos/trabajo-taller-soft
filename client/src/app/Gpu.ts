@@ -5,4 +5,5 @@ export class Gpu{
     img:string;
     memory:string;
     fab:string;
+    nucleoscuda:Number;
 }

@@ -8,6 +8,11 @@ const GpuSchema = new Schema({
     category:{type:String,enum:['Gpu']},
     img:String,
     memory:String,
-    fab:String
+    fab:String,
+    peso:String,
+    cuda:String,
+    nucleoscuda:Number,
+    versiondi:String,
+    versionopl:String
 })
 module.exports = mongoose.model('Gpu',GpuSchema);
