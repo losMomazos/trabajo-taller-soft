@@ -4,7 +4,6 @@ db.cpus.insertMany([
 {
     "name":"Celeron G3930",
     "fab":"Intel",
-    "year":2017,
     "frequency":"2900MHz",
     "socket":"LGA 1151",
     "category":"Cpu",
@@ -13,7 +12,6 @@ db.cpus.insertMany([
 },{
     "name":"Sempron 2650",
     "fab":"AMD",
-    "year":2014,
     "frequency":"1450MHz",
     "socket":"FS1b",
     "category":"Cpu",
@@ -23,7 +21,6 @@ db.cpus.insertMany([
 {
     "name":"Pentium G4400",
     "fab":"Intel",
-    "year":2016,
     "frequency":"3300MHz",
     "socket":"LGA 1151",
     "category":"Cpu",
@@ -33,7 +30,6 @@ db.cpus.insertMany([
 {
     "name":"Ryzen 3 1200",
     "fab":"AMD",
-    "year":2017,
     "frequency":"3100MHz",
     "socket":"AM4",
     "category":"Cpu",
@@ -43,7 +39,6 @@ db.cpus.insertMany([
 {
     "name":"Core i3-7350k",
     "fab":"Intel",
-    "year":2017,
     "frequency":"4200MHz",
     "socket":"LGA 1151",
     "category":"Cpu",
@@ -53,7 +48,6 @@ db.cpus.insertMany([
 {
     "name":"Core i3-8100",
     "fab":"Intel",
-    "year":2017,
     "frequency":"3600MHz",
     "socket":"LGA 1151-v2",
     "category":"Cpu",

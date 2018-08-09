@@ -4,12 +4,12 @@ import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login2',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   providers: [ LoginService ]
 })
-export class LoginComponent {
+export class LoginComponent2 {
 
   public user : User;
 

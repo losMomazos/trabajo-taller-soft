@@ -4,7 +4,7 @@
   "description": "pinostock-web app para comparar hardware",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node index.js",
     "dev": "nodemon src/index.js"
   },
   "repository": {
@@ -18,21 +18,18 @@
   },
   "homepage": "https://gitlab.com/antilef/trabajo-taller-soft#README",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
-    "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.3.0",
     "mongojs": "^2.5.0",
-    "mongoose": "^5.2.4",
-    "morgan": "^1.9.0",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "mongoose": "^5.1.2",
+    "morgan": "^1.9.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"
+  },
+  "engines": {
+    "node": "8.11.3"
   }
 }

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
-import { AppComponent } from './app.component';
+import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -19,24 +18,23 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { CompareComponent } from './components/compare/compare.component';
 import { CompareCpuComponent } from './components/compare-cpu/compare-cpu.component';
 import { CompareGpuComponent } from './components/compare-gpu/compare-gpu.component';
+import { LoginComponent } from './components/login/login.component';
+import { CrudComponent } from './components/crud/crud.component';
+import { AuthService } from './services/auth.service';
+import {TokenInterceptorService} from './services/token-interceptor.service'
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent2 } from './login/login.component';
+import { RootComponent } from './root/root.component';
+import { ROUTING } from './app.routing';
+
 
 const routes:Routes=[
-  {path:'',component:InicioComponent },
-  {path:'motherboard',component:MotherboardComponent},
-  {path:'motherboard/details/:id',component:DetailsComponent},
-  {path:'motherboard/compare/:id',component:CompareComponent},
-  {path:'cpu/compare/:id',component:CompareCpuComponent},
-  {path:'gpu/compare/:id',component:CompareGpuComponent},
-  {path:'cpu',component:CpuComponent},
-  {path:'cpu/details/:id',component:DetailcpuComponent},
-  {path:'gpu',component:GpuComponent},
-  {path:'gpu/details/:id',component:DetailgpuComponent},
+  
 ];
 
 
 @NgModule({
   declarations: [
-    AppComponent,
     NavBarComponent,
     FooterComponent,
     InicioComponent,
@@ -49,7 +47,12 @@ const routes:Routes=[
     CompareComponent,
     CompareCpuComponent,
     CompareGpuComponent,
-    
+    LoginComponent,
+    CrudComponent,
+    LoginComponent2,
+    RegisterComponent,
+    RootComponent
+
   ],
   imports: [
     RouterModule.forRoot(
@@ -58,9 +61,11 @@ const routes:Routes=[
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ROUTING
   ],
-  providers: [MotherService,CpuService,GpuService],
-  bootstrap: [AppComponent]
+  providers: [MotherService,CpuService,GpuService,AuthService,,
+    {provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true}],
+  bootstrap: [RootComponent]
 })
 export class AppModule { }

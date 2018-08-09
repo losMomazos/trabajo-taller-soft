@@ -2,10 +2,25 @@ var router = require('express').Router();
 const Gpu = require('../models/gpu');
 const Cpu = require('../models/cpu');
 const Motherboard = require('../models/motherboard');
-
+const jwt = require('jsonwebtoken');
+function verifyToken(req,res,next){
+    if(!req.headers.authorization){
+        return res.status(401).send('Unauthorized request');
+    }
+    let token = req.headers.authorization.split(' ')[1];
+    if(token==='null'){
+        return res.status(401).send('Unauthorized request');
+    }
+    let payload = jwt.verify(token,'secretkey');
+    if(!payload){
+        return res.status(401).send('Unauthorized request');
+    }
+    req.userId = payload.subject;
+    next();
+}
 
 /**
- *este metodo trae todas las motherboard que concuerden con un json query 
+ *este metodo trae todas las motherboard que concuerden con un json query
  */
 router.get('/api/motherboard',(req,res,next)=>{
     var queryParameter = req.query;
@@ -33,7 +48,7 @@ router.get('/api/motherboard/compatibilidadcpu/:id',(req,res,next)=>{
             if(err) return res.status(200).send({msj:"Error en el servidor"});
             if(!cpus) return res.status(404).send({msj:"Error no hay cpu compatibles"})
             res.json(cpus);
-        })        
+        })
     })
 })
 router.get('/api/motherboard/compatibilidadgpu/:id',(req,res,next)=>{
@@ -43,15 +58,14 @@ router.get('/api/motherboard/compatibilidadgpu/:id',(req,res,next)=>{
         if(!motherboard) return res.status(404).send({msj:"la motherboard no existe "});
         Gpu.find({puerto:motherboard.puerto},(err,gpus)=>{
             if(err) return res.status(200).send({msj:"Error en el servidor"});
-            if(!gpus) return res.status(404).send({msj:"Error no hay gpu compatibles"}) 
+            if(!gpus) return res.status(404).send({msj:"Error no hay gpu compatibles"})
             res.json(gpus);
-        })        
+        })
     })
 })
 
 
-router.post('/api/motherboard',(req,res,next)=>{
-    console.log(req.body);
+router.post('/api/motherboard',verifyToken,(req,res,next)=>{
     let motherboard = new Motherboard();
     motherboard.name = req.body.name;
     motherboard.socket = req.body.socket;
@@ -64,10 +78,10 @@ router.post('/api/motherboard',(req,res,next)=>{
 
     motherboard.save((err,motherboardStore)=>{
         if(err) res.status(500).send({msj:`Error to save ${err}` })
-        res.status(200).send({product:motherboardStore});
+        res.json(motherboardStore);
     })
 })
-router.put('/api/motherboard/:id',(req,res,next)=>{
+router.put('/api/motherboard/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
     let update = req.body;
     Motherboard.findByIdAndUpdate(id,update,(err,motherboardUpdate)=>{
@@ -75,14 +89,11 @@ router.put('/api/motherboard/:id',(req,res,next)=>{
         res.status(200).send({motherboard:motherboardUpdate});
     })
 })
-router.delete('/api/motherboard/:id',(req,res,next)=>{
+router.delete('/api/motherboard/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
-    Motherboard.findById(id,(err,motherboard)=>{
-        if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
-        motherboard.remove(err=>{
-            if(err) res.status(500).send({msj:"Error del servidor"});
-            res.status(200).send({msj:'motherboard borrada'})
-        })
+    Motherboard.findOneAndRemove(id,(error,doc)=>{
+        if(error) res.status(500).send({msj:'Error   al eliminar'})
+        res.status(200).json(doc);
     })
 })
 module.exports = router;

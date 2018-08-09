@@ -1,0 +1,24 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <h1 class="form-signin-heading">Entrar al Crud</h1>
+
+      <form>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" name="loginUserData.username" placeholder="Enter email" [(ngModel)]="loginUserData.username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="loginUserData.password" placeholder="Password" [(ngModel)]="loginUserData.password">
+        </div>
+        <button   type="button" (click)="loginUser()" class="btn btn-success">Sign in!</button>
+      </form>
+
+    </div>
+  </div>
+
+</div>

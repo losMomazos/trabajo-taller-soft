@@ -1,34 +1,9 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
-const userSchema = new mongoose.Schema({
-    local: {
-        email: String,
-        password: String
-    },
-    facebook: {
-        email: String,
-        password: String,
-        id: String,
-        token: String
-    },
-    twitter: {
-        email: String,
-        password: String,
-        id: String,
-        token: String
-    },
-    google: {
-        email: String,
-        password: String,
-        id: String,
-        token: String
-    },
-});
-userSchema.methods.generateHash = function (password){
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null); // cifrar contraseña antes de guardarla en la DB
-}
-userSchema.methods.validatePassword = function (password){
-    return bcrypt.compareSync(password, this.local.password);
-}
+const Schema = mongoose.Schema;
 
-module.exports = mongoose.model('User', userSchema);
+const userSchema = new Schema({
+    username:String,
+    password:String
+}, { collection : 'usuarios' });
+
+module.exports = mongoose.model('usuarios',userSchema);

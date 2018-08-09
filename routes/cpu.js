@@ -7,11 +7,27 @@ var router = require('express').Router();
 const Gpu = require('../models/gpu'); //model for a colleccion Gpu
 const Cpu = require('../models/cpu'); //model for a collection Cpu
 const Motherboard = require('../models/motherboard'); //model for a collection Motherboard
+const jwt = require('jsonwebtoken');
+function verifyToken(req,res,next){
+    if(!req.headers.authorization){
+        return res.status(401).send('Unauthorized request');
+    }
+    let token = req.headers.authorization.split(' ')[1];
+    if(token==='null'){
+        return res.status(401).send('Unauthorized request');
+    }
+    let payload = jwt.verify(token,'secretkey');
+    if(!payload){
+        return res.status(401).send('Unauthorized request');
+    }
+    req.userId = payload.subject;
+    next();
+}
 
 //el metodo router de express , usa su metodo get , teniendo como parametros una URI y una funcion
 //esta funcion resive como parametro un objeto request , un objeto response y un objeto next
 router.get('/api/cpu',(req,res,next)=>{
-    //atravez del modelo Cpu de mongoose se hacen llamadas a esta colleccion con el metodo find y resive 
+    //atravez del modelo Cpu de mongoose se hacen llamadas a esta colleccion con el metodo find y resive
     //un json como query y un callback, este ultimo resive un error y las cpus que devuelve el metodo
     var queryParameter = req.query;
     Cpu.find(queryParameter,(err,cpus)=>{
@@ -37,7 +53,7 @@ router.get('/api/cpu/:id',(req,res,next)=>{
     })
 })
 /*
- * este metodo busca primero una cpu y teniendo esa cpu busca las motherboard que tengan el mismo socket 
+ * este metodo busca primero una cpu y teniendo esa cpu busca las motherboard que tengan el mismo socket
  * resive objetos request , response y next
  */
 router.get('/api/cpu/compatibilidadmother/:id',(req,res,next)=>{
@@ -49,7 +65,7 @@ router.get('/api/cpu/compatibilidadmother/:id',(req,res,next)=>{
             if(err) return res.status(200).send({msj:"Error en el servidor"});
             if(!motherboards) return res.status(404).send({msj:"Error no hay motherboard compatibles"})
             res.json(motherboards);
-        })        
+        })
     })
 })
 /**
@@ -67,13 +83,12 @@ router.post('/api/cpu',(req,res,next)=>{
     cpu.nucleos = req.body.nucleos;
     cpu.frequency = req.body.frequency;
 
-    cpu.save((err,cpuStore)=>{
-        if(err) res.status(500).send({msj:`Error to save ${err}` })
-        res.status(200).send({cpuStore});
+    cpu.save((err,cpu)=>{
+        if(err) res.send({msj:`Error to save ${err}` })
+        res.json(cpu);
     })
 })
-
-router.put('/api/cpud/:id',(req,res,next)=>{
+router.put('/api/cpu/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
     let update = req.body;
     Cpu.findByIdAndUpdate(id,update,(err,cpuUpdate)=>{
@@ -81,18 +96,15 @@ router.put('/api/cpud/:id',(req,res,next)=>{
         res.status(200).send({cpu:cpuUpdate});
     })
 })
-router.delete('/api/cpu/:id',(req,res,next)=>{
+
+router.delete('/api/cpu/:id',verifyToken,(req,res,next)=>{
     let id = req.params.id;
-    Cpu.findById(id,(err,cpu)=>{
-        if(err) res.status(500).send({msj:'Erro al conectar con el servidor'})
-        cpu.remove(err=>{
-            if(err) res.status(500).send({msj:"Error del servidor"});
-            res.status(200).send({msj:'cpu borrada'})
-        })
+    Cpu.findByIdAndRemove(id,(err,doc)=>{
+        if(err) res.status(500).send({msj:'Erro al eliminar'})
+        res.status(200).json(doc);
     })
 })
-
 /**
- * exporta el modulo para ser llamado desde el index.js 
+ * exporta el modulo para ser llamado desde el index.js
  */
 module.exports = router;

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GpuService} from '../../services/gpu.service';
 import {CpuService} from '../../services/cpu.service';
 import {MotherService} from '../../services/mother.service';
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-crud',
   templateUrl: './crud.component.html',
@@ -21,11 +19,7 @@ export class CrudComponent implements OnInit {
   choiceCpu:boolean=false;
   choiceGpu:boolean=false;
   choiceMother:boolean=false;
-  constructor(private _gpuService:GpuService,private _cpuService:CpuService,private _motherService:MotherService, private router: Router) {
-    if(!localStorage.getItem('loggedInUser')){
-      this.router.navigate(['/']);
-    }
-
+  constructor(private _gpuService:GpuService,private _cpuService:CpuService,private _motherService:MotherService) {
       this._cpuService.getCpus()
       .subscribe(cpu=>{
         this.todo= cpu;
@@ -146,6 +140,4 @@ export class CrudComponent implements OnInit {
       })
     }
   }
-
-  
 }
