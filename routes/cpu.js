@@ -82,6 +82,8 @@ router.post('/api/cpu',(req,res,next)=>{
     cpu.fab = req.body.fab;
     cpu.nucleos = req.body.nucleos;
     cpu.frequency = req.body.frequency;
+    cpu.hilos = req.body.hilos;
+    cpu.cache = req.body.cache;
 
     cpu.save((err,cpu)=>{
         if(err) res.send({msj:`Error to save ${err}` })

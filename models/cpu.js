@@ -10,6 +10,8 @@ const CpuSchema = Schema({
     category:{type:String,enum:['Cpu']},
     img:String,
     nucleos:Number,
+    hilos:String,
+    cache:String,
 })
 
 module.exports = mongoose.model('Cpu',CpuSchema);
